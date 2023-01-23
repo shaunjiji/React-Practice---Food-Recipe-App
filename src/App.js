@@ -12,10 +12,19 @@ function App() {
     console.log(result.data);
   }
 
+  function submit(e) {
+    e.preventDefault();
+    getRecipes();
+  }
+  const onSubmit = (e) => {
+    e.preventDefault();
+    getRecipes();
+  };
+
   return (
     <div className="app">
-      <h1 onClick={getRecipes}> Food Recipes 🍔 </h1>
-      <form className="app__searchForm">
+      <h1> Food Recipes 🍔 </h1>
+      <form className="app__searchForm" onSubmit={onSubmit}>
         <input
           type="text"
           className="app__input"
@@ -23,7 +32,7 @@ function App() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <input type="submit" value="Search" />
+        <input className="app__submit" type="submit" value="Search" />
       </form>
     </div>
   );
