@@ -1,6 +1,7 @@
 import "./App.css";
 import axios from "axios";
 import { useState } from "react";
+import RecipeTile from "./RecipeTile";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -12,7 +13,7 @@ function App() {
   async function getRecipes() {
     var result = await axios.get(url);
     setRecipes(result.data.hits);
-    console.log(result);
+    console.log(result.data.hits);
   }
 
   const onSubmit = (e) => {
@@ -33,7 +34,11 @@ function App() {
         />
         <input className="app__submit" type="submit" value="Search" />
       </form>
-      <div></div>
+      <div>
+        {recipes.map((recipe) => {
+          return <RecipeTile recipe={recipe} />;
+        })}
+      </div>
     </div>
   );
 }
