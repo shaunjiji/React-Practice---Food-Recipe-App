@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function App() {
   const [query, setQuery] = useState("");
-  var url = `https://api.edamam.com/api/recipes/v2?type=public&q='chicken'&app_id=8849044a&app_key=bb9052a8d9d5b7ad3d63b276a7402702
+  var url = `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=8849044a&app_key=bb9052a8d9d5b7ad3d63b276a7402702
   `;
 
   async function getRecipes() {
@@ -16,7 +16,12 @@ function App() {
     <div className="app">
       <h1 onClick={getRecipes}> Food Recipes 🍔 </h1>
       <form className="app__searchForm">
-        <input type="text" placeholder="Enter Ingredient" value={query} />
+        <input
+          type="text"
+          placeholder="Enter Ingredient"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
       </form>
     </div>
   );
