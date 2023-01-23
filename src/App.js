@@ -18,10 +18,12 @@ function App() {
       <form className="app__searchForm">
         <input
           type="text"
+          className="app__input"
           placeholder="Enter Ingredient"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
+        <input type="submit" value="Search" />
       </form>
     </div>
   );
